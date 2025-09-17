@@ -837,4 +837,23 @@ section {
     .project-subtitle {
         font-size: 13px;
     }
+
+    /* 타원 블러 효과 */
+    .project-number::before {
+        top: -20px;
+        left: -20px;
+        width: 40px;
+        height: 40px;
+        filter: blur(60px);
+        z-index: 1;
+    }
+
+    /* 호버 시 원형 블러 나타남 */
+    .project-item:hover .project-number::before {
+        opacity: 0.3;
+        width: 40px;
+        height: 40px;
+        filter: blur(40px);
+    }
+
 }
