@@ -78,7 +78,7 @@ section {
 ----------------- */
 
 #section1 {
-    height: 100vh;
+    height: 100dvh;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -481,6 +481,7 @@ body.light-mode .project-item:hover .project-number::before {
 
 #section2 {
     height: auto;
+    min-height: 100dvh;
     width: 100%;
     display: flex;
     align-items: center;
@@ -600,6 +601,7 @@ body.light-mode .project-item:hover .project-number::before {
 
 #section3 {
     height: auto;
+    min-height: 100dvh;
     width: 100%;
     background: linear-gradient(0deg, rgba(46, 46, 46, 1) 0%, rgba(26, 26, 26, 1) 100%);
     display: flex;
@@ -736,6 +738,18 @@ body.light-mode .project-item:hover .project-number::before {
     line-height: 92px;
     margin-top: 120px;
     letter-spacing: -2px;
+}
+
+/* 폴백 지원 */
+@supports not (height: 100dvh) {
+    #section1 {
+        height: 100vh;
+    }
+    
+    #section2,
+    #section3 {
+        min-height: 100vh;
+    }
 }
 
 /* 태블릿 (1200px 이하) */
