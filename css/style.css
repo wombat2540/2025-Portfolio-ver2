@@ -703,6 +703,12 @@ section {
 /* 모바일 (48px 이하) */
 @media (max-width: 480px) {
 
+     section {
+        width: 100vw;
+        max-width: 100vw;
+        overflow-x: hidden;
+    }
+
     /* 섹션1 */
     .subtitle {
         font-size: 16px;
@@ -801,4 +807,5 @@ section {
     .project-subtitle {
         font-size: 13px;
     }
+
 }
