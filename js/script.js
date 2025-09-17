@@ -110,4 +110,23 @@ function setActiveNav(sectionId) {
 // 페이지 로드 시 첫 번째 네비게이션 활성화
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('[data-section="section1"]').classList.add('active');
+
 });
+
+// 모바일에서만 가로 스크롤 차단
+if (window.innerWidth <= 480) {
+    let scrollPosition = 0;
+    
+    window.addEventListener('scroll', () => {
+        if (window.scrollX !== 0) {
+            window.scrollTo(0, window.scrollY);
+        }
+    });
+    
+    // 터치 이벤트로 가로 스크롤 방지
+    document.addEventListener('touchmove', (e) => {
+        if (Math.abs(e.touches[0].clientX - e.touches[0].target.offsetLeft) > Math.abs(e.touches[0].clientY - e.touches[0].target.offsetTop)) {
+            e.preventDefault();
+        }
+    }, { passive: false });
+}
