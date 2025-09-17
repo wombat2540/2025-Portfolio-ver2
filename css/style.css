@@ -703,13 +703,22 @@ section {
 /* 모바일 (48px 이하) */
 @media (max-width: 480px) {
 
-     section {
+    section {
         width: 100vw;
         max-width: 100vw;
         overflow-x: hidden;
     }
 
-    /* 섹션1 */
+    #section1 {
+        transform: scale(0.8);
+        transform-origin: center top;
+        height: 80vh; /* 축소된만큼 높이도 조정 */
+    }
+    
+    body {
+        overflow-x: hidden; /* 그대로 유지 */
+    }
+
     .subtitle {
         font-size: 16px;
         margin: 0 0 4px;
@@ -720,38 +729,49 @@ section {
         line-height: 44px;
     }
 
+ .eye-container {
+        position: relative;
+        top: 300px; /* 400px → 300px로 줄임 */
+        left: 0;
+        transform: none;
+        width: 0px;
+        height: 0px;
+        display: flex;
+        justify-content: center;
+    }
+
     .eye {
-        width: 900px;
-        height: 500px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform: translate(-50%, -50%);
+        width: 700px; /* 900px → 700px로 줄임 */
+        height: 400px; /* 500px → 400px로 줄임 */
     }
 
     .eye2 {
-        width: 450px;
-        height: 450px;
+        width: 380px; /* 450px → 380px */
+        height: 380px;
     }
 
     .eyeball {
-        width: 320px;
-        height: 320px;
+        width: 280px; /* 320px → 280px */
+        height: 280px;
     }
 
     .circular-text {
-        width: 480px;
-        height: 480px;
-    }
-
-    .pupil {
-        width: 50px;
-        height: 50px;
+        width: 400px; /* 480px → 400px */
+        height: 400px;
     }
 
     /* 섹션2 */
     #section2 {
-        padding: 0 20px 40px 20px;
+        padding: 60px 20px 40px 20px;
+        margin-top: 0; /* margin-top 제거 */
     }
 
-    .profile-container {
-        width: 100%;
+.profile-container {
+        margin-top: 120px;
     }
 
     .profile-img img {
@@ -775,8 +795,8 @@ section {
 
     /* 섹션3 */
     #section3 {
-        margin-top: 100px;
-        padding: 20 20px;
+        margin-top: 60px;
+        padding: 60px 20px;
     }
 
     .contents-main-title {
@@ -807,5 +827,4 @@ section {
     .project-subtitle {
         font-size: 13px;
     }
-
 }
