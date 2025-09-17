@@ -709,14 +709,19 @@ section {
         overflow-x: hidden;
     }
 
+    body {
+        overflow-x: hidden !important; /* 강제로 가로 스크롤 차단 */
+    }
+    
+    html {
+        overflow-x: hidden !important;
+    }
+    
     #section1 {
         transform: scale(0.8);
         transform-origin: center top;
-        height: 80vh; /* 축소된만큼 높이도 조정 */
-    }
-    
-    body {
-        overflow-x: hidden; /* 그대로 유지 */
+        height: 80vh;
+        overflow: hidden; /* 섹션1 내부도 overflow 차단 */
     }
 
     .subtitle {
@@ -827,4 +832,5 @@ section {
     .project-subtitle {
         font-size: 13px;
     }
+
 }
