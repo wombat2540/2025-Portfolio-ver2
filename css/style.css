@@ -168,11 +168,6 @@ body.light-mode .project-item:hover .project-number {
     background-clip: unset;
 }
 
-body.light-mode .project-btn:hover {
-    background: #71ABA5;
-    color: white;
-}
-
 body.light-mode .project-number::before {
     background: #71ABA5;
 }
@@ -206,27 +201,8 @@ body.light-mode .circular-text text {
     fill: #1B243B;
 }
 
-/* 그라디언트 포인트 컬러 적용 */
-body.light-mode .brand,
-body.light-mode .header span.active,
-body.light-mode .header span:hover,
-body.light-mode .project-item:hover .project-number {
-    background: #71ABA5;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
 body.light-mode .profile-title .brand{
     color:  #1B243B;
-}
-
-body.light-mode .project-btn:hover {
-    background: linear-gradient(45deg, #E86E17, #71ABA5);
-    color: white;
-}
-
-body.light-mode .project-number::before {
-    background: linear-gradient(45deg, #E86E17, #71ABA5);
 }
 
 body.light-mode .eye {
@@ -1092,3 +1068,4 @@ body.light-mode .project-item:hover .project-number::before {
     }
 
 }
+
