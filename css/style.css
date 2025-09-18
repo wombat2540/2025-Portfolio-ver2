@@ -216,6 +216,10 @@ body.light-mode .project-item:hover .project-number {
     -webkit-text-fill-color: transparent;
 }
 
+body.light-mode .profile-title .brand{
+    color:  #1B243B;
+}
+
 body.light-mode .project-btn:hover {
     background: linear-gradient(45deg, #E86E17, #71ABA5);
     color: white;
@@ -1086,4 +1090,5 @@ body.light-mode .project-item:hover .project-number::before {
         height: 40px;
         filter: blur(40px);
     }
+
 }
