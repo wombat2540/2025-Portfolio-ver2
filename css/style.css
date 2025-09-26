@@ -103,6 +103,7 @@ section {
 .header span {
     cursor: pointer;
     transition: color 0.3s ease;
+    padding : 0px 12px;
 }
 
 .header span:hover {
@@ -857,3 +858,4 @@ section {
     }
 
 }
+
