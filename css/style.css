@@ -19,8 +19,33 @@ html {
 
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
 
+/* 스크롤바 */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #080808;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #E86E17;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #ff7a28;
+}
+
+/* Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #E86E17 #080808;
+}
+
 body {
-    background: #1a1a1a;
+    /* background: rgb(8, 8, 8); */
+     background: linear-gradient(0deg, rgb(12, 7, 4, 1) 0%, rgba(8, 8, 8, 1) 100%);
     color: #fff;
     font-family: 'pretendard', sans-serif;
     overflow-x: hidden;
@@ -73,19 +98,6 @@ section {
     line-height: 22px;
 }
 
-/* --------------
-섹션1
------------------ */
-
-#section1 {
-    height: 100vh;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-}
-
 .header {
     position: fixed;
     top: 0px;
@@ -94,7 +106,7 @@ section {
     padding: 20px 40px;
     font-size: 14px;
     backdrop-filter: blur(5px);
-    background-color: rgba(26, 26, 26, 0.7);
+    background-color: rgb(8, 8, 8, 0.7);
     width: 100%;
     gap: 28px;
     z-index: 999;
@@ -111,6 +123,20 @@ section {
 
 .header span.active {
     color: #E86E17;
+}
+
+/* --------------
+섹션1
+----------------- */
+
+#section1 {
+    /* height: 100vh; */
+    height: 1200px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
 }
 
 /* 타이틀 섹션 위치 조정 */
@@ -150,13 +176,13 @@ section {
     left: 50%;
     transform: translate(-50%, -50%);
     width: 1280px;
-    height: 768px;
+    height: 700px;
     background-color: #333;
-    border: 2px solid #444;
+    border: 3px solid #3f3f3f;
     overflow: hidden;
     z-index: 100;
     border-radius: 99%;
-    filter: drop-shadow(0 0 30px rgba(232, 110, 23, 0.15));
+    filter: drop-shadow(0 0 30px rgba(232, 110, 23, 0.35));
 }
 
 .eye2 {
@@ -165,7 +191,7 @@ section {
     left: 50%;
     width: 758px;
     height: 758px;
-    background: #2A2A2A;
+    background: #222222;
     border: 2px solid #444;
     border-radius: 50%;
     transform: translate(-50%, -50%);
@@ -182,7 +208,7 @@ section {
     left: 50%;
     width: 468px;
     height: 468px;
-    background: #1E1E1E;
+    background: #111111;
     border-radius: 50%;
     transform: translate(-50%, -50%);
     transition: all 0.1s ease-out;
@@ -274,9 +300,10 @@ section {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    padding: 0 80px;
+    padding: 0 80px 120px 0;
     z-index: 2;
     margin-top: 120px;
+    /* background: linear-gradient(0deg, rgb(12, 7, 4) 0%, rgba(8, 8, 8, 1) 100%); */
 }
 
 .profile-container {
@@ -285,7 +312,7 @@ section {
     width: 100%;
     /* gap: 240px; */
     /* align-items: flex-start; */
-    margin-top: 340px;
+    margin-top: 160px;
     justify-content: space-evenly;
 }
 
@@ -297,7 +324,7 @@ section {
     align-items: left;
     text-align: left;
     width: 30%;
-    max-width: 300px;
+    max-width: 360px;
 }
 
 .profile-img {
@@ -315,16 +342,27 @@ section {
     margin-bottom: 8px;
 }
 
+.profile-intro {
+    margin-bottom: 40px;
+}
+
 .profile-title {
     font-weight: 300;
     font-size: 24px;
     line-height: 34px;
-    margin: 0;
+    margin-bottom: 220px;
 }
 
-.profile-intro {
-    margin-bottom: 40px;
+.profile-slogan-title{
+    font-size: 20px;
 }
+
+.profile-slogan{
+    color: #999;
+    font-weight: 300;
+    margin-top: 12px;
+}
+
 
 /* 오른쪽 정보 영역 */
 .info-section {
@@ -390,13 +428,20 @@ section {
 #section3 {
     height: auto;
     width: 100%;
-    background: linear-gradient(0deg, rgba(46, 46, 46, 1) 0%, rgba(26, 26, 26, 1) 100%);
+    background: linear-gradient(0deg, rgb(17, 11, 7) 100%, rgba(8, 8, 8, 1) 0%);
     display: flex;
     align-items: center;
     justify-content: space-evenly;
     padding: 120px 200px 120px 80px;
-    margin-top: 120px;
-}
+    margin-top: 200px;
+    border-radius: 140px 140px 0 0;
+    border-top:rgba(232, 110, 23, 0.4) 1px solid;
+    box-shadow: 
+    0px 0px 180px rgba(232, 110, 23, 0.3), 
+    inset 1px 2px 8px rgba(232, 110, 23, 0.3),
+    inset 2px 4px 16px rgba(232, 110, 23, 0.2),
+    inset 0.5px 1px 1.5px rgba(232, 110, 23, 0.3);
+    }
 
 .contents-container {
     display: flex;
@@ -407,17 +452,25 @@ section {
 .project-list {
     display: flex;
     flex-direction: column;
-    gap: 60px;
+    gap: 8px;
 }
 
 .project-item {
     display: flex;
     cursor: default;
     gap: 60px;
+    transition: all 0.3s ease;
+    padding: 20px 32px;
 }
 
 .project-item:hover .project-number{
     color: #E86E17;
+}
+
+.project-item:hover {
+    background: rgba(255, 255, 255, 0.02);
+    transform: translateY(-2px);
+    border-radius:12px;
 }
 
 .project-number {
@@ -438,7 +491,7 @@ section {
 }
 
 /* 타원 블러 효과 */
-.project-number::before {
+/* .project-number::before {
     content: '';
     position: absolute;
     top: -20px;
@@ -452,15 +505,15 @@ section {
     filter: blur(60px);
     z-index: -1;
     transition: all 0.4s ease;
-}
+} */
 
 /* 호버 시 타원 블러 나타남 */
-.project-item:hover .project-number::before {
+/* .project-item:hover .project-number::before {
     opacity: 0.2;
     width: 60px;
     height: 60px;
     filter: blur(40px);
-}
+} */
 
 /* 프로젝트 버튼들 */
 .project-buttons {
@@ -523,8 +576,8 @@ section {
     font-size: 72px;
     font-weight: 300;
     line-height: 92px;
-    margin-top: 120px;
-    letter-spacing: -2px;
+    /* margin-top: 120px; */
+    letter-spacing: 0px;
 }
 
 /* 태블릿 (1200px 이하) */
@@ -552,6 +605,10 @@ section {
         height: 200px;
     }
 
+    .profile-title{
+        margin-bottom: 56px;
+    }
+
     .info-item {
         gap: 20px;
         text-align: left;
@@ -560,6 +617,13 @@ section {
     /* 섹션3 */
     #section3 {
         padding: 70px 40px 40px;
+        margin-top: 120px;
+        border-radius: 80px 80px 0 0;
+        box-shadow:
+        0px 0px 140px rgba(232, 110, 23, 0.388),
+        inset 1px 2px 10px rgba(232, 110, 23, 0.3),
+        inset 2px 4px 20px rgba(232, 110, 23, 0.2),
+        inset 0.5px 1px 1.5px rgba(232, 110, 23, 0.3);
     }
 
     .contents-container {
@@ -666,6 +730,12 @@ section {
         flex-direction: column;
         gap: 56px;
         box-sizing: border-box;
+        border-radius: 60px 60px 0 0;
+        box-shadow:
+        0px 0px 80px rgba(232, 110, 23, 0.388),
+        inset 1px 2px 10px rgba(232, 110, 23, 0.3),
+        inset 2px 4px 20px rgba(232, 110, 23, 0.2),
+        inset 0.5px 1px 1.5px rgba(232, 110, 23, 0.3);
     }
 
     .contents-main-title {
@@ -678,7 +748,7 @@ section {
     }
 
     .project-item {
-        gap: 32px;
+        gap: 16px;
         box-sizing: border-box;
     }
 
@@ -780,7 +850,7 @@ section {
     }
 
 .profile-container {
-        margin-top: 120px;
+        margin-top: 60px;
         width: 100%;
     }
 
@@ -792,6 +862,18 @@ section {
     .profile-title {
         font-size: 20px;
         line-height: 28px;
+        margin-bottom: 24px;
+    }
+
+    .profile-slogan-title {
+    font-size: 16px;
+    }
+
+    
+    .profile-slogan {
+    font-size: 14px;
+    line-height: 20px;
+    margin-top: 8px;
     }
 
     .skill-icons {
@@ -807,6 +889,11 @@ section {
     #section3 {
         margin-top: 60px;
         padding: 60px 24px;
+        box-shadow:
+        0px 0px 56px rgba(232, 110, 23, 0.388),
+        inset 0.5px 1.5px 12px rgba(232, 110, 23, 0.3),
+        inset 1px 2px 12px rgba(232, 110, 23, 0.2),
+        inset 0.5px 1px 1.5px rgba(232, 110, 23, 0.3);
     }
 
     .contents-main-title {
@@ -817,6 +904,7 @@ section {
     .project-item {
         width: 100%;
         min-width: 300px;
+        gap: 8px;
     }
 
     .project-number {
@@ -857,6 +945,3 @@ section {
     }
 
 }
-
-
-
