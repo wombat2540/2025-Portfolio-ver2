@@ -75,7 +75,6 @@ a, button, .project-item, .header span, .project-btn, .theme-toggle {
     align-items: center;
     justify-content: center;
     background: rgba(232, 110, 23, 1);
-    
 }
 
 /* 호버 시 투명 + 블러 */
@@ -317,6 +316,25 @@ section {
     color: #333;
 }
 
+.slogan-circle {
+    background-color: rgb(232, 110, 23, 0.1);
+    filter: blur(100px);
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    border-radius: 50%;
+    top: -150px;
+    left: -150px;
+    box-shadow: 40px 0px 40px rgba(232, 110, 23, 0.8);
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+.slogan-circle.active {
+    opacity: 1;
+}
+
+
 .slogan-title{
     font-size: 20px;
     font-weight: 300;
@@ -330,8 +348,8 @@ section {
 .slogan{
     font-size: 32px;
     font-weight: 300;
-    margin-top: 12px;
-    line-height: 42px;
+    margin-top: 20px;
+    line-height: 46px;
 }
 
 .slogan .line {
@@ -404,6 +422,14 @@ section {
     font-size: 24px;
     line-height: 34px;
     margin-bottom: 20px;
+    opacity: 0;
+    transform: translateY(8px); 
+    transition: opacity 0.5s ease-in, transform 0.5s ease;
+}
+
+.profile-title.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .profile-left .info-item{
@@ -458,6 +484,7 @@ section {
     display: flex;
     flex-wrap: wrap;
     gap: 16px;
+    transition: transform 0.5s ease;
 }
 
 .skill-icons img {
@@ -465,6 +492,10 @@ section {
     height: 40px;
 }
 
+.skill-icons img:hover {
+    filter: brightness(0) saturate(100%) invert(45%) sepia(84%) saturate(2076%) hue-rotate(360deg) brightness(97%) contrast(92%);
+    transform: scale(1.05);
+}
 
 
 /* --------------
@@ -480,13 +511,10 @@ section {
     justify-content: space-evenly;
     padding: 120px 200px 120px 80px;
     margin-top: 200px;
-    border-radius: 140px 140px 0 0;
+    /* border-radius: 80px 80px 0 0; */
     border-top:rgba(232, 110, 23, 0.4) 1px solid;
     box-shadow: 
-    0px 0px 180px rgba(232, 110, 23, 0.3), 
-    inset 1px 2px 8px rgba(232, 110, 23, 0.3),
-    inset 2px 4px 16px rgba(232, 110, 23, 0.2),
-    inset 0.5px 1px 1.5px rgba(232, 110, 23, 0.3);
+    0px 0px 400px rgba(232, 110, 23, 0.4);
     }
 
 .contents-container {
@@ -648,12 +676,8 @@ section {
     #section3 {
         padding: 70px 40px 40px;
         margin-top: 120px;
-        border-radius: 80px 80px 0 0;
         box-shadow:
-        0px 0px 140px rgba(232, 110, 23, 0.388),
-        inset 1px 2px 10px rgba(232, 110, 23, 0.3),
-        inset 2px 4px 20px rgba(232, 110, 23, 0.2),
-        inset 0.5px 1px 1.5px rgba(232, 110, 23, 0.3);
+        0px 0px 140px rgba(232, 110, 23, 0.388);
     }
 
     .contents-container {
@@ -781,12 +805,6 @@ section {
         flex-direction: column;
         gap: 56px;
         box-sizing: border-box;
-        border-radius: 60px 60px 0 0;
-        box-shadow:
-        0px 0px 80px rgba(232, 110, 23, 0.388),
-        inset 1px 2px 10px rgba(232, 110, 23, 0.3),
-        inset 2px 4px 20px rgba(232, 110, 23, 0.2),
-        inset 0.5px 1px 1.5px rgba(232, 110, 23, 0.3);
     }
 
     .contents-main-title {
@@ -913,6 +931,15 @@ section {
     line-height: 28px;
 }
 
+.slogan-circle {
+    background-color: rgb(232, 110, 23, 0.1);
+    filter: blur(50px);
+    width: 100px;
+    height: 100px;
+    top: -80px;
+    left: -100px;
+}
+
     /* 섹션2 */
     #section2 {
         padding: 60px 24px 40px 24px;
@@ -960,10 +987,7 @@ section {
         margin-top: 60px;
         padding: 60px 24px;
         box-shadow:
-        0px 0px 56px rgba(232, 110, 23, 0.388),
-        inset 0.5px 1.5px 12px rgba(232, 110, 23, 0.3),
-        inset 1px 2px 12px rgba(232, 110, 23, 0.2),
-        inset 0.5px 1px 1.5px rgba(232, 110, 23, 0.3);
+        0px 0px 120px rgba(232, 110, 23, 0.388);
     }
 
     .contents-main-title {
@@ -997,4 +1021,3 @@ section {
     }
 
 }
-
