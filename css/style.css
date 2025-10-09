@@ -44,8 +44,7 @@ html {
 }
 
 body {
-    /* background: rgb(8, 8, 8); */
-     background: linear-gradient(0deg, rgb(12, 7, 4, 1) 0%, rgba(8, 8, 8, 1) 100%);
+    background: linear-gradient(0deg, rgb(12, 7, 4, 1) 0%, rgba(8, 8, 8, 1) 100%);
     color: #fff;
     font-family: 'pretendard', sans-serif;
     overflow-x: hidden;
@@ -53,6 +52,36 @@ body {
     font-size: 16px;
     line-height: 24px;
     margin: 0;
+    /* cursor: none !important; */
+    
+}
+
+/* 모든 요소에 적용 */
+a, button, .project-item, .header span, .project-btn, .theme-toggle {
+    cursor: none !important;
+}
+
+/* 커스텀 커서 */
+.custom-cursor {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: width 0.2s ease, height 0.2s ease, opacity 0.2s ease, filter 0.2s ease; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(232, 110, 23, 1);
+    
+}
+
+/* 호버 시 투명 + 블러 */
+.custom-cursor.hover {
+    opacity: 0.4;
+    border: 1px solid #753100;
 }
 
 .date {
@@ -69,15 +98,6 @@ body {
 .brand {
     color: #E86E17;
 }
-
-/* 폰트 스타일 */
-.profile-title {
-    font-weight: 100;
-    font-size: 24px;
-    line-height: 34px;
-    margin: 0;
-}
-
 
 /* 섹션 공통 스타일 */
 section {
@@ -130,13 +150,11 @@ section {
 ----------------- */
 
 #section1 {
-    /* height: 100vh; */
-    height: 1200px;
+    height: 3000px; /* 슬로건 애니메이션 공간 확보 */
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
-
 }
 
 /* 타이틀 섹션 위치 조정 */
@@ -290,6 +308,42 @@ section {
     }
 }
 
+.slogan-wrap{
+    position: sticky; /* fixed 대신 sticky 사용 */
+    top: 50vh;
+    transform: translateY(-50%);
+    margin-top: 1020px;
+    width: 60%;
+    color: #333;
+}
+
+.slogan-title{
+    font-size: 20px;
+    font-weight: 300;
+    transition: color 0.5s ease;
+}
+
+.slogan-title.active {
+    color: #E86E17;
+}
+
+.slogan{
+    font-size: 32px;
+    font-weight: 300;
+    margin-top: 12px;
+    line-height: 42px;
+}
+
+.slogan .line {
+    transition: color 0.5s ease;
+    display: inline-block;
+}
+
+.slogan .line.active {
+    color: #fff;
+}
+
+
 /* --------------
 섹션2
 ----------------- */
@@ -300,20 +354,18 @@ section {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    padding: 0 80px 120px 0;
+    padding: 0 0 120px 0;
     z-index: 2;
-    margin-top: 120px;
+    margin-top: 320px;
     /* background: linear-gradient(0deg, rgb(12, 7, 4) 0%, rgba(8, 8, 8, 1) 100%); */
 }
 
 .profile-container {
     display: flex;
-    /* max-width: 1200px; */
     width: 100%;
-    /* gap: 240px; */
-    /* align-items: flex-start; */
+    gap: 240px;
     margin-top: 160px;
-    justify-content: space-evenly;
+    justify-content: center;
 }
 
 /* 왼쪽 프로필 영역 */
@@ -324,11 +376,12 @@ section {
     align-items: left;
     text-align: left;
     width: 30%;
-    max-width: 360px;
+    max-width: 380px;
+    gap: 28px;
 }
 
 .profile-img {
-    margin-bottom: 24px;
+    /* margin-bottom: 24px; */
 }
 
 .profile-img img {
@@ -350,19 +403,12 @@ section {
     font-weight: 300;
     font-size: 24px;
     line-height: 34px;
-    margin-bottom: 220px;
+    margin-bottom: 20px;
 }
 
-.profile-slogan-title{
-    font-size: 20px;
+.profile-left .info-item{
+    margin-bottom: 8px;
 }
-
-.profile-slogan{
-    color: #999;
-    font-weight: 300;
-    margin-top: 12px;
-}
-
 
 /* 오른쪽 정보 영역 */
 .info-section {
@@ -465,6 +511,7 @@ section {
 
 .project-item:hover .project-number{
     color: #E86E17;
+    font-weight: 200;
 }
 
 .project-item:hover {
@@ -475,45 +522,14 @@ section {
 
 .project-number {
     font-size: 24px;
-    font-weight: 300;
-    width: 40px;
-    flex-shrink: 0;
-}
-
-.project-number {
-    font-size: 24px;
-    font-weight: 300;
+    font-weight: 100;
     width: 40px;
     flex-shrink: 0;
     position: relative;
     z-index: 2;
     transition: all 0.3s ease;
+    color: #eee;
 }
-
-/* 타원 블러 효과 */
-/* .project-number::before {
-    content: '';
-    position: absolute;
-    top: -20px;
-    left: -20px;
-    width: 60px;
-    height: 60px;
-    background: #E86E17;
-    filter: drop-shadow(0 0 30px rgba(232, 110, 23, 0.15));
-    border-radius: 50%;
-    opacity: 0;
-    filter: blur(60px);
-    z-index: -1;
-    transition: all 0.4s ease;
-} */
-
-/* 호버 시 타원 블러 나타남 */
-/* .project-item:hover .project-number::before {
-    opacity: 0.2;
-    width: 60px;
-    height: 60px;
-    filter: blur(40px);
-} */
 
 /* 프로젝트 버튼들 */
 .project-buttons {
@@ -583,6 +599,13 @@ section {
 /* 태블릿 (1200px 이하) */
 @media (max-width: 1208px) {
 
+    /* 섹션1 */
+
+    .slogan-wrap{
+    width: 62%;
+}
+
+
     /* 섹션2 */
     #section2 {
         padding: 0 40px 60px 40px;
@@ -593,7 +616,14 @@ section {
         text-align: center;
         justify-content: center;
         width: 60%;
+        gap: 40px;
+        margin-top: 0px;
     }
+
+    .profile-left .info-item{
+        margin-bottom: 20px;
+    }
+
 
     /* 왼쪽 프로필 영역 */
     .profile-left {
@@ -692,19 +722,40 @@ section {
         height: 100px;
     }
 
+    .slogan-wrap{
+        width: 75%;
+    }
+
+    .slogan-title{
+        font-size: 16px;
+    }
+
+    .slogan{
+        font-size: 28px;
+        line-height: 38px;
+    }
+
     /* 섹션2 */
     #section2 {
-        padding: 0 20px 40px 20px;
-        margin-top: 20px;
+        padding: 72px 20px 40px 20px;
     }
 
     .profile-container {
         width: 80%;
+        gap: 36px;
     }
 
     .profile-img img {
         width: 140px;
         height: 180px;
+    }
+
+    .profile-title {
+        margin-bottom: 24px;
+    }
+
+    .profile-left .info-item {
+        margin-bottom: 0;
     }
 
     .info-section {
@@ -795,7 +846,7 @@ section {
     #section1 {
         transform: scale(1);
         transform-origin: center top;
-        height: 100vh;
+        height: 1200px;
     }
 
     .subtitle {
@@ -824,33 +875,48 @@ section {
         top: 0;
         left: 0;
         transform: translate(-50%, -50%);
-        width: 700px; /* 900px → 700px로 줄임 */
-        height: 400px; /* 500px → 400px로 줄임 */
+        width: 700px;
+        height: 400px; 
     }
 
     .eye2 {
-        width: 380px; /* 450px → 380px */
+        width: 380px;
         height: 380px;
     }
 
     .eyeball {
-        width: 280px; /* 320px → 280px */
+        width: 280px;
         height: 280px;
     }
 
     .circular-text {
-        width: 400px; /* 480px → 400px */
+        width: 400px;
         height: 400px;
     }
+
+    .slogan-wrap{
+    margin-top: 800px;
+    width: 85%;
+}
+
+.slogan-title{
+    font-size: 14px;
+}
+
+.slogan{
+    font-size: 20px;
+    margin-top: 8px;
+    line-height: 28px;
+}
 
     /* 섹션2 */
     #section2 {
         padding: 60px 24px 40px 24px;
-        margin-top: 0; /* margin-top 제거 */
+        margin-top: 120px;
     }
 
 .profile-container {
-        margin-top: 60px;
+        margin-top: 200px;
         width: 100%;
     }
 
@@ -862,7 +928,7 @@ section {
     .profile-title {
         font-size: 20px;
         line-height: 28px;
-        margin-bottom: 24px;
+        margin-bottom: 0px;
     }
 
     .profile-slogan-title {
@@ -924,24 +990,6 @@ section {
 
     .project-subtitle {
         font-size: 13px;
-    }
-
-    /* 타원 블러 효과 */
-    .project-number::before {
-        top: -20px;
-        left: -20px;
-        width: 40px;
-        height: 40px;
-        filter: blur(60px);
-        z-index: 1;
-    }
-
-    /* 호버 시 원형 블러 나타남 */
-    .project-item:hover .project-number::before {
-        opacity: 0.3;
-        width: 40px;
-        height: 40px;
-        filter: blur(40px);
     }
 
 }
