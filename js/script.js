@@ -173,7 +173,8 @@ if (cursor) {
 }
 
 const sloganWrap = document.querySelector('.slogan-wrap');
-const sloganTitle = document.querySelector('.slogan-title'); // 타이틀 추가
+const sloganTitle = document.querySelector('.slogan-title');
+const sloganCircle = document.querySelector('.slogan-circle'); // 추가
 const lines = document.querySelectorAll('.slogan .line');
 
 if (sloganWrap && lines.length > 0) {
@@ -191,7 +192,12 @@ if (sloganWrap && lines.length > 0) {
         if (progress >= sloganStart && progress <= sloganEnd) {
             const sloganProgress = (progress - sloganStart) / (sloganEnd - sloganStart);
             
-            // 슬로건 타이틀 먼저 변경 (가장 먼저 시작)
+            // 슬로건 원형 블러 나타남
+            if (sloganCircle) {
+                sloganCircle.classList.add('active');
+            }
+            
+            // 슬로건 타이틀 먼저 변경
             if (sloganTitle) {
                 if (sloganProgress >= 0) {
                     sloganTitle.classList.add('active');
@@ -202,7 +208,7 @@ if (sloganWrap && lines.length > 0) {
             
             // 각 라인을 순차적으로 활성화
             lines.forEach((line, index) => {
-                const lineThreshold = (index + 0.3) / lines.length; // 타이틀 다음에 시작
+                const lineThreshold = (index + 0.3) / lines.length;
                 
                 if (sloganProgress >= lineThreshold) {
                     line.classList.add('active');
@@ -211,11 +217,30 @@ if (sloganWrap && lines.length > 0) {
                 }
             });
         } else if (progress > sloganEnd) {
+            if (sloganCircle) sloganCircle.classList.add('active');
             if (sloganTitle) sloganTitle.classList.add('active');
             lines.forEach(line => line.classList.add('active'));
         } else {
+            if (sloganCircle) sloganCircle.classList.remove('active');
             if (sloganTitle) sloganTitle.classList.remove('active');
             lines.forEach(line => line.classList.remove('active'));
         }
     });
+}
+
+// 섹션2 프로필 타이틀 페이드인
+const profileTitle = document.querySelector('.profile-title');
+
+if (profileTitle) {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, {
+        threshold: 0.3 // 30% 보이면 활성화
+    });
+    
+    observer.observe(profileTitle);
 }
