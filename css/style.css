@@ -842,6 +842,10 @@ section {
     html {
         overflow-x: hidden !important;
     }
+
+    .custom-cursor {
+        display: none;
+    }
     
     #section1 {
         transform: scale(1);
@@ -993,3 +997,4 @@ section {
     }
 
 }
+
