@@ -26,7 +26,10 @@ body {
   object-fit: contain;
   display: block;
   margin: 0 auto;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.landing{
+  margin-bottom: 0;
 }
 
 /* 고정 버튼 스타일 */
@@ -160,4 +163,5 @@ body {
     width: 24px !important;
     height: 24px !important;
   }
+
 }
