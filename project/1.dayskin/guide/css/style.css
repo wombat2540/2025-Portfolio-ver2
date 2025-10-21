@@ -29,6 +29,10 @@ body {
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
+.landing{
+  margin-bottom: 0;
+}
+
 /* 고정 버튼 스타일 */
 .fixed {
   position: fixed;
@@ -169,4 +173,5 @@ body {
     width: 48px !important;
     height: 48px !important;
   }
+
 }
