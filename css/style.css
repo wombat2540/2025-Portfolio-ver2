@@ -19,8 +19,42 @@ html {
 
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
 
+/* 스크롤바 */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #080808;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #E86E17;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #ff7a28;
+}
+
+/* Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #E86E17 #080808;
+}
+
+/* 드래그시 브랜드컬러 */
+::selection {
+  background: rgba(232, 110, 23, 0.50);
+  color: #fff;
+}
+::-moz-selection {
+  background: rgba(232, 110, 23, 0.50);
+  color: #fff;
+}
+
 body {
-    background: #1a1a1a;
+    background: linear-gradient(0deg, rgb(12, 7, 4, 1) 0%, rgba(8, 8, 8, 1) 100%);
     color: #fff;
     font-family: 'pretendard', sans-serif;
     overflow-x: hidden;
@@ -28,7 +62,43 @@ body {
     font-size: 16px;
     line-height: 24px;
     margin: 0;
+    cursor: none !important;
+    
 }
+
+/* 모든 요소에 적용 */
+a, button, .project-item, .header span, .project-btn, .theme-toggle {
+    cursor: none !important;
+}
+
+/* 메인 물방울 커서 */
+.custom-cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #E86E17; /* 브랜드 컬러 */
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate3d(0, 0, 0);
+}
+
+/* 꼬리 물방울들 */
+.custom-cursor-trail {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #E86E17;
+  pointer-events: none;
+  z-index: 9998;
+  opacity: 0.9;
+}
+
 
 .date {
     font-size: 14px;
@@ -45,15 +115,6 @@ body {
     color: #E86E17;
 }
 
-/* 폰트 스타일 */
-.profile-title {
-    font-weight: 100;
-    font-size: 24px;
-    line-height: 34px;
-    margin: 0;
-}
-
-
 /* 섹션 공통 스타일 */
 section {
     width: 100%;
@@ -68,22 +129,9 @@ section {
 }
 
 .small-title {
-    font-weight: 100;
+    font-weight: 300;
     font-size: 14px;
     line-height: 22px;
-}
-
-/* --------------
-섹션1
------------------ */
-
-#section1 {
-    height: 100vh;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
 }
 
 .header {
@@ -93,8 +141,9 @@ section {
     justify-content: center;
     padding: 20px 40px;
     font-size: 14px;
+    font-weight: 400;
     backdrop-filter: blur(5px);
-    background-color: rgba(26, 26, 26, 0.7);
+    background-color: rgb(8, 8, 8, 0.7);
     width: 100%;
     gap: 28px;
     z-index: 999;
@@ -111,6 +160,18 @@ section {
 
 .header span.active {
     color: #E86E17;
+}
+
+/* --------------
+섹션1
+----------------- */
+
+#section1 {
+    height: 3000px; /* 슬로건 애니메이션 공간 확보 */
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 /* 타이틀 섹션 위치 조정 */
@@ -150,13 +211,13 @@ section {
     left: 50%;
     transform: translate(-50%, -50%);
     width: 1280px;
-    height: 768px;
+    height: 700px;
     background-color: #333;
-    border: 2px solid #444;
+    border: 3px solid #3f3f3f;
     overflow: hidden;
     z-index: 100;
     border-radius: 99%;
-    filter: drop-shadow(0 0 30px rgba(232, 110, 23, 0.15));
+    filter: drop-shadow(0 0 30px rgba(232, 110, 23, 0.35));
 }
 
 .eye2 {
@@ -165,7 +226,7 @@ section {
     left: 50%;
     width: 758px;
     height: 758px;
-    background: #2A2A2A;
+    background: #222222;
     border: 2px solid #444;
     border-radius: 50%;
     transform: translate(-50%, -50%);
@@ -182,7 +243,7 @@ section {
     left: 50%;
     width: 468px;
     height: 468px;
-    background: #1E1E1E;
+    background: #111111;
     border-radius: 50%;
     transform: translate(-50%, -50%);
     transition: all 0.1s ease-out;
@@ -264,6 +325,61 @@ section {
     }
 }
 
+.slogan-wrap{
+    position: sticky; /* fixed 대신 sticky 사용 */
+    top: 50vh;
+    transform: translateY(-50%);
+    margin-top: 1020px;
+    width: 60%;
+    color: #333;
+}
+
+.slogan-circle {
+    background-color: rgb(232, 110, 23, 0.1);
+    filter: blur(100px);
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    border-radius: 50%;
+    top: -150px;
+    left: -150px;
+    box-shadow: 40px 0px 40px rgba(232, 110, 23, 0.8);
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+.slogan-circle.active {
+    opacity: 1;
+}
+
+
+.slogan-title{
+    font-size: 24px;
+    font-weight: 500;
+    transition: color 0.5s ease;
+}
+
+.slogan-title.active {
+    color: #E86E17;
+}
+
+.slogan{
+    font-size: 40px;
+    font-weight: 400;
+    margin-top: 20px;
+    line-height: 56px;
+}
+
+.slogan .line {
+    transition: color 0.5s ease;
+    display: inline-block;
+}
+
+.slogan .line.active {
+    color: #fff;
+}
+
+
 /* --------------
 섹션2
 ----------------- */
@@ -274,19 +390,18 @@ section {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    padding: 0 80px;
+    padding: 0 0 120px 0;
     z-index: 2;
-    margin-top: 120px;
+    margin-top: 320px;
+    /* background: linear-gradient(0deg, rgb(12, 7, 4) 0%, rgba(8, 8, 8, 1) 100%); */
 }
 
 .profile-container {
     display: flex;
-    /* max-width: 1200px; */
     width: 100%;
-    /* gap: 240px; */
-    /* align-items: flex-start; */
-    margin-top: 340px;
-    justify-content: space-evenly;
+    gap: 240px;
+    margin-top: 160px;
+    justify-content: center;
 }
 
 /* 왼쪽 프로필 영역 */
@@ -297,11 +412,12 @@ section {
     align-items: left;
     text-align: left;
     width: 30%;
-    max-width: 300px;
+    max-width: 380px;
+    gap: 28px;
 }
 
 .profile-img {
-    margin-bottom: 24px;
+    /* margin-bottom: 24px; */
 }
 
 .profile-img img {
@@ -315,15 +431,27 @@ section {
     margin-bottom: 8px;
 }
 
-.profile-title {
-    font-weight: 300;
-    font-size: 24px;
-    line-height: 34px;
-    margin: 0;
-}
-
 .profile-intro {
     margin-bottom: 40px;
+}
+
+.profile-title {
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 34px;
+    margin-bottom: 20px;
+    opacity: 0;
+    transform: translateY(8px); 
+    transition: opacity 0.5s ease-in, transform 0.5s ease;
+}
+
+.profile-title.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.profile-left .info-item{
+    margin-bottom: 8px;
 }
 
 /* 오른쪽 정보 영역 */
@@ -374,6 +502,7 @@ section {
     display: flex;
     flex-wrap: wrap;
     gap: 16px;
+    transition: transform 0.5s ease;
 }
 
 .skill-icons img {
@@ -381,6 +510,10 @@ section {
     height: 40px;
 }
 
+.skill-icons img:hover {
+    filter: brightness(0) saturate(100%) invert(45%) sepia(84%) saturate(2076%) hue-rotate(360deg) brightness(97%) contrast(92%);
+    transform: scale(1.05);
+}
 
 
 /* --------------
@@ -390,13 +523,17 @@ section {
 #section3 {
     height: auto;
     width: 100%;
-    background: linear-gradient(0deg, rgba(46, 46, 46, 1) 0%, rgba(26, 26, 26, 1) 100%);
+    background: linear-gradient(0deg, rgb(17, 11, 7) 100%, rgba(8, 8, 8, 1) 0%);
     display: flex;
     align-items: center;
     justify-content: space-evenly;
     padding: 120px 200px 120px 80px;
-    margin-top: 120px;
-}
+    margin-top: 200px;
+    /* border-radius: 80px 80px 0 0; */
+    border-top:rgba(232, 110, 23, 0.4) 1px solid;
+    box-shadow: 
+    0px 0px 400px rgba(232, 110, 23, 0.4);
+    }
 
 .contents-container {
     display: flex;
@@ -407,59 +544,37 @@ section {
 .project-list {
     display: flex;
     flex-direction: column;
-    gap: 60px;
+    gap: 8px;
 }
 
 .project-item {
     display: flex;
     cursor: default;
     gap: 60px;
+    transition: all 0.3s ease;
+    padding: 20px 32px;
 }
 
 .project-item:hover .project-number{
     color: #E86E17;
+    font-weight: 200;
+}
+
+.project-item:hover {
+    background: rgba(255, 255, 255, 0.02);
+    transform: translateY(-2px);
+    border-radius:12px;
 }
 
 .project-number {
     font-size: 24px;
-    font-weight: 300;
-    width: 40px;
-    flex-shrink: 0;
-}
-
-.project-number {
-    font-size: 24px;
-    font-weight: 300;
+    font-weight: 100;
     width: 40px;
     flex-shrink: 0;
     position: relative;
     z-index: 2;
     transition: all 0.3s ease;
-}
-
-/* 타원 블러 효과 */
-.project-number::before {
-    content: '';
-    position: absolute;
-    top: -20px;
-    left: -20px;
-    width: 60px;
-    height: 60px;
-    background: #E86E17;
-    filter: drop-shadow(0 0 30px rgba(232, 110, 23, 0.15));
-    border-radius: 50%;
-    opacity: 0;
-    filter: blur(60px);
-    z-index: -1;
-    transition: all 0.4s ease;
-}
-
-/* 호버 시 타원 블러 나타남 */
-.project-item:hover .project-number::before {
-    opacity: 0.2;
-    width: 60px;
-    height: 60px;
-    filter: blur(40px);
+    color: #eee;
 }
 
 /* 프로젝트 버튼들 */
@@ -523,12 +638,19 @@ section {
     font-size: 72px;
     font-weight: 300;
     line-height: 92px;
-    margin-top: 120px;
-    letter-spacing: -2px;
+    /* margin-top: 120px; */
+    letter-spacing: 0px;
 }
 
 /* 태블릿 (1200px 이하) */
 @media (max-width: 1208px) {
+
+    /* 섹션1 */
+
+    .slogan-wrap{
+    width: 62%;
+}
+
 
     /* 섹션2 */
     #section2 {
@@ -540,7 +662,14 @@ section {
         text-align: center;
         justify-content: center;
         width: 60%;
+        gap: 40px;
+        margin-top: 0px;
     }
+
+    .profile-left .info-item{
+        margin-bottom: 20px;
+    }
+
 
     /* 왼쪽 프로필 영역 */
     .profile-left {
@@ -552,6 +681,10 @@ section {
         height: 200px;
     }
 
+    .profile-title{
+        margin-bottom: 56px;
+    }
+
     .info-item {
         gap: 20px;
         text-align: left;
@@ -560,6 +693,9 @@ section {
     /* 섹션3 */
     #section3 {
         padding: 70px 40px 40px;
+        margin-top: 120px;
+        box-shadow:
+        0px 0px 140px rgba(232, 110, 23, 0.388);
     }
 
     .contents-container {
@@ -628,19 +764,40 @@ section {
         height: 100px;
     }
 
+    .slogan-wrap{
+        width: 75%;
+    }
+
+    .slogan-title{
+        font-size: 16px;
+    }
+
+    .slogan{
+        font-size: 28px;
+        line-height: 38px;
+    }
+
     /* 섹션2 */
     #section2 {
-        padding: 0 20px 40px 20px;
-        margin-top: 20px;
+        padding: 72px 20px 40px 20px;
     }
 
     .profile-container {
         width: 80%;
+        gap: 36px;
     }
 
     .profile-img img {
         width: 140px;
         height: 180px;
+    }
+
+    .profile-title {
+        margin-bottom: 24px;
+    }
+
+    .profile-left .info-item {
+        margin-bottom: 0;
     }
 
     .info-section {
@@ -678,7 +835,7 @@ section {
     }
 
     .project-item {
-        gap: 32px;
+        gap: 16px;
         box-sizing: border-box;
     }
 
@@ -721,11 +878,15 @@ section {
     html {
         overflow-x: hidden !important;
     }
+
+    .cursor {
+        display: none;
+    }
     
     #section1 {
         transform: scale(1);
         transform-origin: center top;
-        height: 100vh;
+        height: 1200px;
     }
 
     .subtitle {
@@ -754,33 +915,57 @@ section {
         top: 0;
         left: 0;
         transform: translate(-50%, -50%);
-        width: 700px; /* 900px → 700px로 줄임 */
-        height: 400px; /* 500px → 400px로 줄임 */
+        width: 700px;
+        height: 400px; 
     }
 
     .eye2 {
-        width: 380px; /* 450px → 380px */
+        width: 380px;
         height: 380px;
     }
 
     .eyeball {
-        width: 280px; /* 320px → 280px */
+        width: 280px;
         height: 280px;
     }
 
     .circular-text {
-        width: 400px; /* 480px → 400px */
+        width: 400px;
         height: 400px;
     }
+
+    .slogan-wrap{
+    margin-top: 800px;
+    width: 85%;
+}
+
+.slogan-title{
+    font-size: 14px;
+}
+
+.slogan{
+    font-size: 20px;
+    margin-top: 8px;
+    line-height: 28px;
+}
+
+.slogan-circle {
+    background-color: rgb(232, 110, 23, 0.1);
+    filter: blur(50px);
+    width: 100px;
+    height: 100px;
+    top: -80px;
+    left: -100px;
+}
 
     /* 섹션2 */
     #section2 {
         padding: 60px 24px 40px 24px;
-        margin-top: 0; /* margin-top 제거 */
+        margin-top: 120px;
     }
 
 .profile-container {
-        margin-top: 120px;
+        margin-top: 200px;
         width: 100%;
     }
 
@@ -792,6 +977,18 @@ section {
     .profile-title {
         font-size: 20px;
         line-height: 28px;
+        margin-bottom: 0px;
+    }
+
+    .profile-slogan-title {
+    font-size: 16px;
+    }
+
+    
+    .profile-slogan {
+    font-size: 14px;
+    line-height: 20px;
+    margin-top: 8px;
     }
 
     .skill-icons {
@@ -807,6 +1004,8 @@ section {
     #section3 {
         margin-top: 60px;
         padding: 60px 24px;
+        box-shadow:
+        0px 0px 120px rgba(232, 110, 23, 0.388);
     }
 
     .contents-main-title {
@@ -817,6 +1016,7 @@ section {
     .project-item {
         width: 100%;
         min-width: 300px;
+        gap: 8px;
     }
 
     .project-number {
@@ -838,27 +1038,4 @@ section {
         font-size: 13px;
     }
 
-    /* 타원 블러 효과 */
-    .project-number::before {
-        top: -20px;
-        left: -20px;
-        width: 40px;
-        height: 40px;
-        filter: blur(60px);
-        z-index: 1;
-    }
-
-    /* 호버 시 원형 블러 나타남 */
-    .project-item:hover .project-number::before {
-        opacity: 0.3;
-        width: 40px;
-        height: 40px;
-        filter: blur(40px);
-    }
-
 }
-
-
-
-
-
