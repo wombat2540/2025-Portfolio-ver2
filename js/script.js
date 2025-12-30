@@ -272,8 +272,8 @@ if (sloganWrap && lines.length > 0) {
         const scrollInSection1 = -section1Rect.top;
         const progress = Math.max(0, Math.min(1, scrollInSection1 / section1Height));
         
-        const sloganStart = 0.5;
-        const sloganEnd = 0.85;
+        const sloganStart = 0.4;
+        const sloganEnd = 0.5;
         
         if (progress >= sloganStart && progress <= sloganEnd) {
             const sloganProgress = (progress - sloganStart) / (sloganEnd - sloganStart);
